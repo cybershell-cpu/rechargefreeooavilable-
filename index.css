@@ -1,0 +1,239 @@
+/* ================================
+   Floating Label Input Box Styling
+   ================================ */
+.input-box {
+  position: relative;        /* Needed to position the floating label inside */
+  width: 300px;
+  margin: 20px 0;
+}
+
+.input-box input {
+  width: 60%;
+  padding: 12px 10px 8px 10px; /* Extra top padding to fit floating label */
+  font-size: 16px;
+  background: #222 url("hacker.gif"); /* dark bg with hacker gif */
+  border: 1px solid #0f0;  /* neon green border */
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  color: #0f0;              /* neon green text */
+  outline: none;
+  transition: border-color 0.1s, box-shadow 0.1s; /* smooth animation */
+}
+
+.input-box input:focus {
+  border-color: #888888;  /* red border when focused */
+  box-shadow: 0 0 0 1px #888888; /* subtle red glow */  
+}
+
+.input-box label {
+  position: absolute; 
+  top: 22px;               /* label starts inside input */
+  left: 12px;
+  font-size: 14px;
+  color: #888888;          /* gray label text */
+  font-style: italic;
+  pointer-events: none;    /* prevents clicking the label */
+  transition: all 0.2s ease; 
+  background: #000 url("hacker.gif"); /* hacker bg behind label */
+  padding: 0 4px;
+}
+
+/* Floating label animation: moves label up if input focused or has text */
+.input-box input:focus + label,
+.input-box input:not(:placeholder-shown) + label {
+  top: 4px;     /* floats label above input */
+  left: 8px;
+  font-size: 12px;
+  color: #FFFFFF; /* glowing blue */
+}
+
+
+/* ================================
+   Global Label Styles
+   ================================ */
+label {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #00ff99;  /* neon green labels */
+  font-weight: bold;
+  margin-bottom: 6px;
+  display: block;
+}
+
+
+/* ================================
+   Input & Select Fields
+   ================================ */
+input, select {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin: 10px 0 20px;
+  background: #222 url("hacker.gif"); /* hacker gif bg */
+  color: #0f0;
+  border: 1px solid #0F0;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+/* Placeholder Styling */
+input::placeholder {
+  color: #888888;
+  font-style: italic;
+}
+
+
+/* ================================
+   Body Layout & Background
+   ================================ */
+body {
+  margin: 5px;
+  padding: 15px;
+  height: 100%;
+  background: #000 url("hacker.gif") no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Courier New', monospace;
+}
+
+
+/* ================================
+   Form Container
+   ================================ */
+.container {
+  padding: 20px;
+  border-radius: 15px;
+  animation: rainbowBorder 8s linear infinite; /* animated glowing border */
+  box-shadow: 0 0 30px #0f0; /* neon glow */
+  color: #fff;
+  width: 100%;
+  
+}
+
+
+/* Rainbow glow effect around container */
+@keyframes rainbowBorder {
+  0%   { box-shadow: 0 0 25px #FFA500; }  /* Orange */
+  10%  { box-shadow: 0 0 25px #00FFFF; }  /* Cyan */
+  20%  { box-shadow: 0 0 25px #800080; }  /* Purple */
+  30%  { box-shadow: 0 0 25px #FFFFFF; }  /* White */
+  40%  { box-shadow: 0 0 25px #FF00FF; }  /* Magenta */
+  50%  { box-shadow: 0 0 25px #0000FF; }  /* Blue */
+  60%  { box-shadow: 0 0 25px #FF0000; }  /* Red */
+  70%  { box-shadow: 0 0 25px #000000; }  /* Black */
+  80%  { box-shadow: 0 0 25px #FFFF00; }  /* Yellow */
+  90%  { box-shadow: 0 0 25px #00FF00; }  /* Green */
+  100% { box-shadow: 0 0 25px #FFA500; }  /* Back to Orange */
+}
+
+.glow-box {
+  width: 150px;
+  height: 150px;
+  background: #111;
+  border-radius: 12px;
+  animation: glowRandom 2s infinite linear;
+}
+
+
+/* ================================
+   Phone Number Input Field
+   ================================ */
+.phone-field {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.phone-field span {
+  background: ;
+  padding: 10px;
+  border: 1px solid #0F0;
+  border-radius: 6px 0 0 6px;
+  color: #0F0;
+}
+
+
+/* ================================
+   Bitcoin Payment Label
+   ================================ */
+label.btc-label {
+  color: #f7931a; /* Bitcoin orange */
+  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.payment-option {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.bitcoin-icon {
+  width: 100px;
+  height: 100px;
+  vertical-align: middle;
+  margin-right: 5px;
+  padding: 10px;
+}
+
+
+/* ================================
+   Submit Button
+   ================================ */
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  background: linear-gradient(270deg, #00FFFF, #FF0000, #FFFFFF, #FFA500, #FFFF00, #000000, #800080, #00FF00, #FF00FF, #0000FF);
+  background-size: 1000% 100%;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  animation: colorFlow 4s linear infinite; /* animated color gradient */
+}
+
+button[type="submit"]:hover {
+  background-color: #0f0; /* neon green hover */
+}
+
+
+/* ================================
+   Footer Disclaimer
+   ================================ */
+footer.disclaimer {
+  text-align: center;
+  margin-top: 30px;
+  color: gray;
+  font-size: 12px;
+}
+
+
+/* ================================
+   Animated Heading (H1)
+   ================================ */
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  background: linear-gradient(270deg, #000000, #00FF00, #FF00FF, #FFFFFF, #FFA500, #FF0000, #0000FF, #00FFFF, #800080, #FFFF00);
+  background-size: 1000% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorFlow 4s linear infinite;
+  text-shadow: 0 0 10px #0f0; /* glowing text */
+}
+
+
+/* ================================
+   Shared Animated Gradient (used in button & heading)
+   ================================ */
+@keyframes colorFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}

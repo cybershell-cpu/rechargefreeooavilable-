@@ -1,0 +1,134 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  height: 90vh;
+  width: 100%;
+  background-color: #000;
+  background-image: url("hacker.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0f0;
+  text-align: center;
+  padding: 15px;
+}
+
+/* Main container */
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 100%;
+  animation: borderPulse 3s infinite alternate;
+}
+
+/* Heading */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  background: linear-gradient(270deg, #FF0000, #00FF00, #0000FF, #FFFF00, #FF00FF);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rgbFlow 6s ease infinite;
+}
+
+/* RGB animation */
+@keyframes rgbFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Paragraph */
+p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+/* Subscribe button */
+.subscribe-btn {
+  background: linear-gradient(270deg, #FFA500, #00FFFF, #800080, #FFFFFF, #FF00FF, #0000FF, #FF0000, #000000, #FFFF00);
+  background-size: 600% 600%;
+  animation: rgbFlow 6s ease infinite;
+  color: #000;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.subscribe-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* Slide-in toast */
+.slide-comment {
+  background-color: #111;
+  border: 1px solid #00ff99;
+  color: #00ff99;
+  font-family: 'Courier New', monospace;
+  padding: 10px 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #00ff99;
+  font-size: 14px;
+  position: fixed;
+  right: -300px;
+  bottom: 20px;
+  opacity: 0;
+  z-index: 9999;
+}
+
+/* Active state triggers full animation */
+.slide-comment.active {
+  animation: slideIn 0.8s ease-out forwards,
+             stayVisible 3s forwards 0.8s,
+             slideOut 0.8s ease-in forwards 3.8s;
+}
+
+/* Keyframes */
+@keyframes slideIn {
+  to { right: 30px; opacity: 1; }
+}
+@keyframes stayVisible {
+  from { right: 30px; opacity: 1; }
+  to   { right: 30px; opacity: 1; }
+}
+@keyframes slideOut {
+  to { right: -300px; opacity: 0; }
+}
+
+/* Border glow */
+@keyframes borderPulse {
+  0%   { box-shadow: 0 0 25px #FF0000; }
+  25%  { box-shadow: 0 0 25px #FFFF00; }
+  50%  { box-shadow: 0 0 25px #00FF00; }
+  75%  { box-shadow: 0 0 25px #00FFFF; }
+  100% { box-shadow: 0 0 25px #FF00FF; }
+}
+
+/* Responsive */
+@media screen and (max-width: 300px) {
+  h1 { font-size: 2rem; }
+  p  { font-size: 1rem; }
+  .subscribe-btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+}

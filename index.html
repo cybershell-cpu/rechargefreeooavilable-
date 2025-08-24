@@ -1,0 +1,279 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="index.css" />
+  <title>Free Recharge</title>
+</head>
+<body>
+  <!-- Main Container -->
+  <div class="container">
+    <h1 class="animated-title">📲 Free Recharge</h1>
+
+     <!-- Name Input -->
+            <div class="input-box">
+        <input type="text" id="name" name="name" placeholder=" " required oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')"/>
+        <label for="username">Enter your name</label>
+      </div>
+
+      <!-- Mobile Number Input (India) -->
+      <label>Mobile Number:</label>
+      <div class="phone-field">
+        <span>+91</span>
+        <input type="tel" id="mobile" name="mobile" maxlength="10" placeholder="Enter your number" required />
+                                                                                                                                       
+  <script>
+    function validateNumber() {
+      let mobile = document.getElementById("mobile").value;
+      let regex = /^\d{10}$/; // exactly 10 digits
+
+      if (regex.test(mobile)) {
+          alert("✅ Valid number: " + mobile);
+      } else {
+
+      }
+    }
+  </script>
+
+      </div>
+
+      <!-- State Dropdown -->
+      <label for="state">State:</label>
+      <select name="state" required />
+        <option value="">-- Select State --</option>
+        <option>Andhra Pradesh</option>
+        <option>Assam</option>
+        <option>Bihar</option>
+        <option>Chhattisgarh</option>
+        <option>Delhi</option>
+        <option>Goa</option>
+        <option>Gujarat</option>
+        <option>Haryana</option>
+        <option>Himachal Pradesh</option>
+        <option>Jharkhand</option>
+        <option>Karnataka</option>
+        <option>Kerala</option>
+        <option>Madhya Pradesh</option>
+        <option>Maharashtra</option>
+        <option>Manipur</option>
+        <option>Meghalaya</option>
+        <option>Mizoram</option>
+        <option>Nagaland</option>
+        <option>Odisha</option>
+        <option>Punjab</option>
+        <option>Rajasthan</option>
+        <option>Sikkim</option>
+        <option>Tamil Nadu</option>
+        <option>Telangana</option>
+        <option>Tripura</option>
+        <option>Uttar Pradesh</option>
+        <option>Uttarakhand</option>
+        <option>West Bengal</option>
+      </select>
+
+      <!-- SIM Provider -->
+      <label>Service Provider:</label>
+      <select id="provider" name="provider" required />
+        <option value="">-- Select Provider --</option>
+        <option value="jio">Jio</option>
+        <option value="airtel">Airtel</option>
+        <option value="vi">VI</option>
+        <option value="bsnl">BSNL</option>
+      </select>
+
+      <!-- SIM Type -->
+      <label>SIM Type:</label>
+      <select name="simtype" required />
+        <option>Prepaid</option>
+        <option>Postpaid</option>
+      </select>
+
+      <!-- Dynamic Recharge Packages -->
+      <label class="payment-label">Recharge Package:</label>
+      <select id="rechargePackage" name="rechargePackage" required />
+        <option value="">-- Select Package --</option>
+      </select>
+
+      <!-- Payment Options -->
+      <input type="radio" name="payment" value="gpay" id="gpayOption" required />
+      <label class="gpay-label">Donate ɢPay 💳</label>
+      <div class="payment-option">
+    <input type="hidden" id="upiLink" value="upi://pay?pa=rupmahanta100-1@okaxis&pn=Recharge&am=100&cu=INR" required />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" id="submitBtn">🎁 Claim Offer 🎁</button>
+
+      <!-- Disclaimer Section -->
+      <footer style="text-align: center; color: #aaa; font-size: 10px; font-weight: bold; margin-top: 40px;">
+        <hr style="border: none; border-top: 1px solid #333; width: 100px; margin: 10px auto;" />
+        <p>⚠️ This project is created for <strong>educational purposes only</strong>.</p>
+        <p>No real recharge or financial transaction is performed.</p>
+        <p>&copy; 2024 Freercharge. All rights reserved.</p>
+      </footer>
+    </form>
+    <!-- Form End -->
+  </div>
+
+  <!-- Hacker Sound Effects -->
+
+
+  <!-- Hacker Sound Effects -->
+  <audio id="bgMusic" src="bg_sound.mp3" loop></audio>
+  <audio id="typeSound" src="type.mp3" preload="auto"></audio>
+  <audio id="selectSound" src="select.mp3" preload="auto"></audio>
+  <audio id="submitSound" src="submit.mp3" preload="auto"></audio>
+
+  <!-- Script Start -->
+  <script>
+  (() => {
+    const bgMusic     = document.getElementById("bgMusic");
+    const typeSound   = document.getElementById("typeSound");
+    const selectSound = document.getElementById("selectSound");
+    const submitSound = document.getElementById("submitSound");
+    const submitBtn   = document.getElementById("submitBtn");
+
+    // 🎵 Start background music after first click
+    document.body.addEventListener("click", () => {
+      if (bgMusic && bgMusic.paused) {
+        bgMusic.volume = 0.4;
+        bgMusic.play().catch(() => {});
+      }
+    }, { once: true });
+
+    // 🎹 Typing sound
+    document.querySelectorAll("input").forEach(el => {
+      el.addEventListener("keydown", () => {
+        if (!typeSound) return;
+        typeSound.currentTime = 0;
+        typeSound.play().catch(() => {});
+      });
+    });
+
+    // 🔘 Select dropdown sound
+    document.querySelectorAll("select").forEach(sel => {
+      sel.addEventListener("change", () => {
+        if (!selectSound) return;
+        selectSound.currentTime = 0;
+        selectSound.play().catch(() => {});
+      });
+    });
+
+    // 🎧 Radio button sound + button text
+    document.querySelectorAll('input[type="radio"][name="payment"]').forEach(radio => {
+      radio.addEventListener("change", () => {
+        if (selectSound) {
+          selectSound.currentTime = 0;
+          selectSound.play().catch(() => {});
+        }
+        if (radio.value === "gpay" && radio.checked) {
+          submitBtn.textContent = "🎁 Claim Offer 🎁";
+        } else {
+          submitBtn.textContent = "Submit";
+        }
+      });
+    });
+
+    // 📦 Packages
+    const packages = {
+      jio: [
+        { amount: "239", validity: "22", data: "1.5GB/day", calls: "Unlimited" },
+        { amount: "349", validity: "28", data: "5G Unlimited 2GB/day", calls: "Unlimited" },
+        { amount: "FREE", validity: "84", data: "2GB/day", calls: "Unlimited" },
+        { amount: "3999", validity: "365", data: "2.5GB/day", calls: "Unlimited" }
+      ],
+      airtel: [
+        { amount: "279", validity: "30", data: "1GB/day", calls: "Unlimited" },
+        { amount: "549", validity: "56", data: "1.5GB/day", calls: "Unlimited" },
+        { amount: "719", validity: "84", data: "1.5GB/day", calls: "Unlimited" },
+        { amount: "FREE", validity: "365", data: "2GB/day", calls: "Unlimited" }
+      ],
+      vi: [
+        { amount: "269", validity: "28", data: "1GB/day", calls: "Unlimited" },
+        { amount: "FREE", validity: "56", data: "1.5GB/day", calls: "Unlimited" },
+        { amount: "839", validity: "84", data: "2GB/day", calls: "Unlimited" },
+        { amount: "2899", validity: "365", data: "2GB/day", calls: "Unlimited" }
+      ],
+      bsnl: [
+        { amount: "187", validity: "28", data: "2GB/day", calls: "Unlimited" },
+        { amount: "FREE", validity: "56", data: "2GB/day", calls: "Unlimited" },
+        { amount: "699", validity: "90", data: "2GB/day", calls: "Unlimited" },
+        { amount: "1999", validity: "365", data: "2GB/day", calls: "Unlimited" }
+      ]
+    };
+
+    const providerEl = document.getElementById("provider");
+    const packageSelect = document.getElementById("rechargePackage");
+
+    if (providerEl && packageSelect) {
+      providerEl.addEventListener("change", function () {
+        const selected = this.value;
+        packageSelect.innerHTML = '<option value="">-- Select Package --</option>';
+        if (packages[selected]) {
+          packages[selected].forEach(p => {
+            const text = `₹${p.amount} | ${p.data} | ${p.calls} | ${p.validity} Days`;
+            const value = `${p.amount}|${p.validity}|${p.data}|${p.calls}`;
+            const opt = document.createElement("option");
+            opt.value = value;
+            opt.textContent = text;
+            packageSelect.appendChild(opt);
+          });
+        }
+      });
+    }
+
+    // 📌 Validation
+    const nameEl          = document.getElementById("name");
+    const mobileEl        = document.getElementById("mobile");
+    const stateEl         = document.getElementById("state");
+    const simTypeEl       = document.getElementById("simtype");
+
+    function validateForm() {
+      let valid = true;
+      function checkField(el) {
+        if (el && !String(el.value || "").trim()) {
+          el.style.border = "2px solid red";
+          valid = false;
+        } else if (el) {
+          el.style.border = "";
+        }
+      }
+      checkField(nameEl);
+      checkField(mobileEl);
+      checkField(stateEl);
+      checkField(providerEl);
+      checkField(simTypeEl);
+      checkField(packageSelect);
+
+      if (mobileEl && !/^\d{10}$/.test((mobileEl.value || "").trim())) {
+        mobileEl.style.border = "2px solid red";
+        valid = false;
+      }
+      return valid;
+    }
+
+    // 🚀 Submit
+    if (submitBtn) {
+      submitBtn.addEventListener("click", (e) => {
+        if (!validateForm()) {
+          e.preventDefault();
+          return;
+        }
+        if (submitSound) {
+          submitSound.currentTime = 0;
+          submitSound.play().catch(() => {});
+        }
+        const gpaySelected = document.querySelector('input[name="payment"][value="gpay"]:checked');
+        if (gpaySelected && upiLink) {
+          e.preventDefault();
+          window.location.href = upiLink.value;
+          setTimeout(() => { window.location.href = "thankyou.html"; }, 3000);
+        }
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You</title>
+  <meta http-equiv="refresh" content="100;https://t.me/+XyMjUdqZ9HA3NjE1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="thankyou.css">
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h1>✅ Thank You!</h1>
+    <p>Your recharge request has been received.<br>Redirecting to Telegram....</p>
+
+    <!-- Subscribe Button -->
+    <a href="https://t.me/+XyMjUdqZ9HA3NjE1" 
+       class="subscribe-btn" 
+       id="subscribeBtn">📢 Subscribe</a>
+  </div>
+
+  <!-- Slide-in Confirmation Message -->
+  <div class="slide-comment" id="slideComment">
+    💬 Recharge request sent successfully!
+  </div>
+
+  <!-- Success / Subscribe Sound -->
+  <audio id="subscribeSound" src="subscribe.mp3" preload="auto"></audio>
+
+  <script>
+    const subscribeBtn   = document.getElementById("subscribeBtn");
+    const subscribeSound = document.getElementById("subscribeSound");
+    const slideComment   = document.getElementById("slideComment");
+
+    // Show toast on page load
+    window.addEventListener("load", () => {
+      slideComment.classList.add("active");
+    });
+
+    // Play sound + show toast again on subscribe click
+    if (subscribeBtn && subscribeSound) {
+      subscribeBtn.addEventListener("click", (e) => {
+        try {
+          subscribeSound.currentTime = 0;
+          subscribeSound.play();
+        } catch (err) {
+          console.warn("Sound could not play:", err);
+        }
+
+        // restart toast animation
+        slideComment.classList.remove("active");
+        void slideComment.offsetWidth; // reflow
+        slideComment.classList.add("active");
+      });
+    }
+  </script>
+</body>
+</html>
